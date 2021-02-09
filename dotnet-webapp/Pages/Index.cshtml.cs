@@ -20,17 +20,8 @@ namespace dotnet_webapp.Pages
 
         public void OnGet()
         {
-            try
-            {
-                DbConnect dbConnection = new DbConnect();
-                Console.WriteLine(dbConnection);
-                Console.WriteLine($"Ping : {dbConnection.Ping()}");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            DbConnect dbConnection = new DbConnect();
+            ViewData["FromDb"] = dbConnection.GetData().First();
         }
     }
 }
